@@ -1,0 +1,56 @@
+html,
+body {
+	background-color: #FFFFFF;
+}
+
+@font-face {
+	font-family: 'segoe script';
+	font-weight: normal;
+	font-style: normal;
+	src: url('../../../fonts/segoe_script.ttf') format('truetype');
+}
+
+#home-nav a{
+	color:#000;
+	font-weight: 600;
+}
+#home-nav h1.hometit {
+	font-family: 'segoe script',Helvetica, sans-serif;
+	font-size: 30px;
+}
+
+#home-nav h1.othertit {
+	font-family: 'Helvetica Neue', Helvetica, sans-serif;
+	font-size: 20px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

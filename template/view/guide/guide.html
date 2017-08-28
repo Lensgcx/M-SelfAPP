@@ -1,0 +1,129 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link rel="stylesheet" href="../../../src/project/css/libs/mui.css" />
+		<style type="text/css">
+			body {
+				background-color: black;
+			}
+			
+			.guide-img {
+				width: 100%;
+			}
+			
+			#guide_start {
+				position: absolute;
+				bottom: 20%;
+				-moz-border-radius: 50%;
+				-webkit-border-radius: 50%;
+				border-radius: 50%;
+				left: 40%;
+				font-size: 1rem;
+				text-align: center;
+				color: rgba(144, 39, 142, .98);
+				background-color: transparent;
+				border: 1px solid rgba(144, 39, 142, .98);
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="mui-content">
+			<div class="mui-slider mui-fullscreen">
+				<div class="mui-slider-group">
+					<div class="mui-slider-item">
+						<a href="javascript:;">
+							<img class="guide-img" src="../../../src/project/img/guide/MIMO 引导页1.png">
+						</a>
+					</div>
+					<div class="mui-slider-item">
+						<a href="javascript:;">
+							<img class="guide-img" src="../../../src/project/img/guide/MIMO 引导页2.png">
+						</a>
+					</div>
+					<div class="mui-slider-item">
+						<a href="javascript:;">
+							<img class="guide-img" src="../../../src/project/img/guide/MIMO 引导页3.png">
+						</a>
+					</div>
+					<div class="mui-slider-item">
+						<a href="javascript:;">
+							<img class="guide-img" src="../../../src/project/img/guide/MIMO 引导页4.png">
+							<button class="mui-btn" type="button" id="guide_start">BETTER</button>
+							<script>
+								guide_start.style.height = document.getElementById("guide_start").offsetWidth + "px";
+							</script>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script src="../../../src/project/js/libs/mui.js"></script>
+		<script type="text/javascript">
+			mui.init();
+			mui.plusReady(function() {
+				/**
+				 * 获取系统状态栏高度
+				 * http://www.html5plus.org/doc/zh_cn/navigator.html#plus.navigator.getStatusbarHeight
+				 */
+				var sh = plus.navigator.getStatusbarHeight();
+				/**
+				 * 获取设备屏幕高度分辨率以及宽度分辨率
+				 * http://www.html5plus.org/doc/zh_cn/device.html#plus.screen.resolutionHeight
+				 * http://www.html5plus.org/doc/zh_cn/device.html#plus.screen.resolutionWidth
+				 */
+				var h = plus.screen.resolutionHeight;
+				var w = plus.screen.resolutionWidth;
+				alert(w)
+				/**
+				 * 设置图片高度，这里图片并不规范；
+				 * 实际开发中，建议大家制作iphone6plus规格的图片；
+				 */
+				var imgs = document.querySelectorAll(".guide-img");
+				for(var i = 0, len = imgs.length; i < len; i++) {
+					imgs[i].style.height = (h - sh) + "px";
+					imgs[i].style.width = w + "px";
+					javascript: ;
+				}
+
+				/**
+				 * 手动关闭启动页
+				 * http://www.html5plus.org/doc/zh_cn/navigator.html#plus.navigator.closeSplashscreen
+				 */
+				plus.navigator.closeSplashscreen();
+				document.getElementById("guide_start").addEventListener("tap", function() {
+					this.style.backgroundColor = 'rgba(144, 39, 142, .98)';
+					this.style.color = 'rgba(255, 255, 255, .98)';
+					this.style.border = 'none';
+					if(this.style.border = 'none') {
+						/**
+						 * 向本地存储中设置launchFlag的值，即启动标识；
+						 * http://www.html5plus.org/doc/zh_cn/storage.html#plus.storage.setItem
+						 */
+						plus.storage.setItem("launchFlag", "true");
+						mui.openWindow({
+							url: "../main/main.html",
+							id: "main",
+							extras: {
+								mark: "gudie" //同样，这里也只是个标识，实际开发中并不用；
+							},
+							waiting: {
+								autoShow: false, //自动显示等待框，默认为true
+							}
+						});
+					}
+
+				});
+			});
+			/**
+			 * 重写mui.back()，什么都不执行，反之用户返回到入口页；
+			 */
+			mui.back = function() {};
+		</script>
+	</body>
+
+</html>

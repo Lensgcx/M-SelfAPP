@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>Hello MIMO</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="../../../src/project/css/libs/mui.css">
+		<link rel="stylesheet" href="../../../src/project/css/nomal/main/mainent.css">
+		<script src="../../../src/project/js/fonts/mimo-icon.js"></script>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav" id="home-nav">
+			<a class="mui-icon mui-pull-left" href="#offCanvasSide">
+				<svg class="mimo-icon" aria-hidden="true">
+					<use xlink:href="#icon-search"></use>
+				</svg>
+			</a>
+			<h1 id="title" class="mui-title hometit">MIMO</h1>
+			<a class="mui-icon mui-pull-right" href="#offCanvasSide">
+				<svg class="mimo-icon" aria-hidden="true">
+					<use xlink:href="#icon-gouwuche"></use>
+				</svg>
+			</a>
+		</header>
+
+		<nav class="mui-bar mui-bar-tab">
+			<a id="defaultTab" class="mui-tab-item mui-active" href='mimo-home/mimo-home.html'>
+				<svg class="mui-icon mimo-icon " aria-hidden="true">
+					<use xlink:href="#icon-shouye"></use>
+				</svg>
+				<span class="mui-tab-label">首页</span>
+			</a>
+			<a class="mui-tab-item" href="mimo-sexy.html">
+				<svg class="mui-icon mimo-icon " aria-hidden="true">
+					<use xlink:href="#icon-creditlevel"></use>
+				</svg>
+				<span class="mui-tab-label">美物</span>
+			</a>
+			<a class="mui-tab-item" href="mimo-classify.html">
+				<svg class="mui-icon mimo-icon" aria-hidden="true">
+					<use xlink:href="#icon-danpin"></use>
+				</svg>
+				<span class="mui-tab-label">分类</span>
+			</a>
+			<a class="mui-tab-item" href="mimo-news.html">
+				<div class="mui-icon">
+					<svg class=" mimo-icon" aria-hidden="true">
+						<use xlink:href="#icon-liuyan"></use>
+					</svg>
+					<span class="mui-badge">0</span>
+				</div>
+				<span class="mui-tab-label">消息</span>
+			</a>
+			<a class="mui-tab-item" href="mimo-personal.html">
+				<svg class="mui-icon mimo-icon" aria-hidden="true">
+					<use xlink:href="#icon-wode"></use>
+				</svg>
+				<span class="mui-tab-label">我</span>
+			</a>
+		</nav>
+		<script src="../../../src/project/js/libs/mui.js"></script>
+		<script src="../../../src/project/js/plugins/mimo-currency.js"></script>
+		<script type="text/javascript" charset="utf-8">
+			//mui初始化
+			mui.init();
+			var subpages = [
+				'mimo-home/mimo-home.html',
+				'mimo-sexy.html',
+				'mimo-classify.html',
+				'mimo-news.html',
+				'mimo-personal.html'
+			];
+			var subpage_style = {
+				top: '45px',
+				bottom: '51px'
+			};
+
+			var aniShow = {};
+
+			//创建子页面，首个选项卡页面显示，其它均隐藏；
+			mui.plusReady(function() {
+
+				var self = plus.webview.currentWebview();
+				var Main_webview_l = document.querySelectorAll('nav.mui-bar-tab a.mui-tab-item').length;
+				for(var i = 0; i < Main_webview_l; i++) {
+					var temp = {};
+					var sub = plus.webview.create(subpages[i], subpages[i], subpage_style);
+					if(i > 0) {
+						sub.hide();
+					} else {
+						temp[subpages[i]] = "true";
+						mui.extend(aniShow, temp);
+					}
+					self.append(sub);
+				}
+			});
+			//当前激活选项
+			var activeTab = subpages[0];
+			var title = document.getElementById("title");
+			//获取首页顶部标题值
+			var hometit = title.innerHTML;
+
+			//选项卡点击事件
+			mui('.mui-bar-tab').on('tap', 'a', function(e) {
+				var targetTab = this.getAttribute('href');
+				if(targetTab == activeTab) {
+					return;
+				}
+
+				//更换标题
+				if(targetTab == subpages[0]) {
+					title.innerHTML = hometit;
+					removeClass(title, 'othertit');
+					addClass(title, 'hometit');
+				} else {
+					title.innerHTML = this.querySelector('.mui-tab-label').innerHTML;
+					removeClass(title, 'hometit');
+					addClass(title, 'othertit');
+				}
+
+				//显示目标选项卡
+				//若为iOS平台或非首次显示，则直接显示
+				if(mui.os.ios || aniShow[targetTab]) {
+					plus.webview.show(targetTab);
+				} else {
+					//否则，使用fade-in动画，且保存变量
+					var temp = {};
+					temp[targetTab] = "true";
+					mui.extend(aniShow, temp);
+					plus.webview.show(targetTab, "fade-in", 300);
+				}
+				//隐藏当前;
+				plus.webview.hide(activeTab);
+				//更改当前活跃的选项卡
+				activeTab = targetTab;
+			});
+			//自定义事件，模拟点击“首页选项卡”
+			document.addEventListener('gohome', function() {
+				var defaultTab = document.getElementById("defaultTab");
+				//模拟首页点击
+				mui.trigger(defaultTab, 'tap');
+				//切换选项卡高亮
+				var current = document.querySelector(".mui-bar-tab>.mui-tab-item.mui-active");
+				if(defaultTab !== current) {
+					current.classList.remove('mui-active');
+					defaultTab.classList.add('mui-active');
+				}
+			});
+		</script>
+	</body>
+
+</html>

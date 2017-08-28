@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>MIMO HOME</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="../../../../src/project/css/libs/mui.css">
+		<link rel="stylesheet" href="../../../../src/project/css/libs/mimo-currency.css">
+		<link rel="stylesheet" href="../../../../src/project/css/nomal/home.css">
+		<script src="../../../../src/project/js/fonts/mimo-icon.js"></script>
+	</head>
+
+	<body>
+		<div id="pullrefresh" class="mui-content mui-scroll-wrapper mimo-home" style="background-color: #FFF;">
+			<div class="mui-scroll" id="xxxxx">
+				<div id="slider" class="mui-slider mimo-home-banner">
+					<div class="mui-slider-group mui-slider-loop">
+						<!-- Add a node -->
+						<div class="mui-slider-item mui-slider-item-duplicate">
+							<a href="#"><img src="../../../../src/project/img/main/home/banner1.png"></a>
+						</div>
+						<div class="mui-slider-item">
+							<a href="#"><img src="../../../../src/project/img/main/home/banner1.png"></a>
+						</div>
+						<div class="mui-slider-item">
+							<a href="#"><img src="../../../../src/project/img/main/home/banner2.png"></a>
+						</div>
+						<div class="mui-slider-item">
+							<a href="#"><img src="../../../../src/project/img/main/home/banner3.png"></a>
+						</div>
+						<div class="mui-slider-item">
+							<a href="#"><img src="../../../../src/project/img/main/home/banner4.png"></a>
+						</div>
+						<!-- Add a node -->
+						<div class="mui-slider-item mui-slider-item-duplicate">
+							<a href="#"><img src="../../../../src/project/img/main/home/banner1.png"></a>
+						</div>
+					</div>
+					<!--<div class="mui-slider-indicator">
+						<div class="mui-indicator mui-active"></div>
+						<div class="mui-indicator"></div>
+						<div class="mui-indicator"></div>
+						<div class="mui-indicator"></div>
+					</div>-->
+				</div>
+				<div class="mui-home-topnav">
+					<!--mimo middle links 上部导航块-->
+					<div class="mui-row both-sides-gap top-gap5">
+						<div class="mui-col-sm-3 mui-col-xs-6 mimo-home-navp">
+							<img src="../../../../src/project/img/main/home/recommend/mimo-home-recommend-tp1.png" />
+							<p>妆说</p>
+						</div>
+						<div class="mui-col-sm-3 mui-col-xs-6 mimo-home-navp">
+							<img src="../../../../src/project/img/main/home/recommend/mimo-home-recommend-tp2.png" />
+							<p>欲望清单</p>
+						</div>
+						<div class="mui-col-sm-3 mui-col-xs-6 mimo-home-navp">
+							<img src="../../../../src/project/img/main/home/recommend/mimo-home-recommend-tp3.png" />
+							<p>黑白</p>
+						</div>
+						<div class="mui-col-sm-3 mui-col-xs-6 mimo-home-navp">
+							<img src="../../../../src/project/img/main/home/recommend/mimo-home-recommend-tp4.png" />
+							<p>男女</p>
+						</div>
+					</div>
+				</div>
+				<!--分割条 bar-->
+				<div class="mimo-home-tabbar"></div>
+				<!--焦点模块 bar-->
+				<div class="mui-card mimo-focus">
+					<div class="mui-card-content">
+						<a href="#">
+							<img class='mimo-focus-cover' src="../../../../info/focus/2.png">
+							<div class="focusdate">
+								<h5></h5>
+								<p></p>
+							</div>
+							<div class="focuscont">
+								<h4>今日焦点</h4>
+								<p>
+									<svg class="mui-icon mimo-icon" aria-hidden="true">
+										<use xlink:href="#icon-1122-v2-21"></use>
+									</svg>
+									<span></span>
+								</p>
+								<p>
+									<svg class="mui-icon mimo-icon" aria-hidden="true">
+										<use xlink:href="#icon-1122-v2-21"></use>
+									</svg>
+									<span></span>
+								</p>
+							</div>
+						</a>
+					</div>
+					<p class="focus-tomorrow text-hide-row1">明日焦点｜<span></span></p>
+				</div>
+				<!--分割条 bar-->
+				<div class="mimo-home-tabbar"></div>
+				<!--mimo stars 红人-->
+				<div class="mimo-home-stars both-sides-gap">
+					<h5>
+						<svg class="mui-icon mimo-icon" aria-hidden="true">
+							<use xlink:href="#icon-VIP3"></use>
+						</svg> MIMO 红人 </h5>
+					<div class="mui-row">
+						<div class="mui-col-sm-3 mui-col-xs-6 mimo-home-starsp"></div>
+						<div class="mui-col-sm-3 mui-col-xs-6 mimo-home-starsp"></div>
+						<div class="mui-col-sm-3 mui-col-xs-6 mimo-home-starsp"></div>
+						<div class="mui-col-sm-3 mui-col-xs-6 mimo-home-starsp"></div>
+					</div>
+				</div>
+				<!--分割条 bar-->
+				<div class="mimo-home-tabbar"></div>
+				<!--cardshow-->
+				<div class="mimo-home-cardshow"></div>
+			</div>
+
+			<div id="gotop" class="gotop-init" style="display: none;">
+				<svg class="mui-icon mimo-icon" aria-hidden="true">
+					<use xlink:href="#icon-huidaodingbu-copy-copy"></use>
+				</svg>
+			</div>
+		</div>
+
+	</body>
+	<script src="../../../../src/project/js/libs/mui.js"></script>
+	<script src="../../../../src/project/js/plugins/mimo-currency.js"></script>
+	<script src="../../../../src/project/js/views/mimo-home/mimo-home.js"></script>
+	<script>
+		//mui init
+		mui.init({
+			swipeBack: true,
+			pullRefresh: {
+				container: '#pullrefresh',
+				down: {
+					callback: pulldownRefresh
+				},
+				up: {
+					contentrefresh: '正在加载...',
+					callback: pullupRefresh
+				}
+			}
+		});
+		/**
+		 * scroll int 
+		 */
+		mui('.mui-scroll-wrapper').scroll({
+			bounce: true,
+			indicators: false,
+			deceleration: 0.0005,
+			deceleration: mui.os.ios ? 0.003 : 0.0009
+		});
+
+		//pullup init value
+		var count = 0;
+		//the number of card-show modules loaded each time
+		var addNum = 2;
+		//pullup refresh switch
+		var refreshflag = false;
+		//ip address
+		var ipadd = 'http://192.168.1.108:8020';
+
+		//focus焦点板块版块   ajax加载
+		focusload('' + ipadd + '/MiMo/src/project/json/sss.json/?jsoncallback=?', new Date);
+
+		//init loading
+		if(mui.os.plus) {
+			mui.plusReady(function() {
+				setTimeout(function() {
+					home_initload(ipadd);
+				}, 300);
+			});
+		} else {
+
+			mui.ready(function() {
+				home_initload(ipadd);
+			});
+		}
+
+		/**
+		 * pullup loading
+		 */
+		function pullupRefresh() {
+			home_upload(ipadd, 100, addNum);
+		}
+
+		/**
+		 * pulldown loading 
+		 */
+		function pulldownRefresh() {
+			setTimeout(function() {
+				//del all node( mimo-home-card )
+				removeNode(".mimo-home-card");
+				//int loading again
+				home_upload(ipadd, 0, addNum);
+				//open switch
+				refreshflag = true;
+				mui('#pullrefresh').pullRefresh().endPulldownToRefresh(); //refresh completed
+				mui('#pullrefresh').pullRefresh().refresh(true); //Restore scroll
+			}, 1000);
+		}
+
+		//回到顶部
+		gcxgotop(2000, 2000);
+		//home banner
+		mui('.mimo-home-banner').slider({
+			interval: 5000
+		});
+	</script>
+
+</html>

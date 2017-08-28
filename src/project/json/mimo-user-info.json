@@ -1,0 +1,40 @@
+{
+	"userinfo":[
+		{
+			"user":{
+				"name":"爱臭美的珊儿",
+				"sex":"female",
+				"age":"26",
+				"signature":"艺术家的人生导演你不懂",
+				"grade":"5",
+				"portrait":"../../../img/main/mimo-card/mimo-card-bp/mimo-card-bp1.png",
+				"Blog":[
+					{ "Article":{ "Article-title":"Guangzhou", "Article-link":"http://www.baidu.com" } },
+					{ "Article":{ "Article-title":"Guangzhou", "Article-link":"http://www.baidu.com" } },
+					{ "Article":{ "Article-title":"Guangzhou", "Article-link":"http://www.baidu.com" } }
+				]
+			}
+		},
+
+		{
+			"user":{
+				"name":"DG.",
+				"sex":"female",
+				"age":"28",
+				"signature":"保密.保密.保密",
+				"grade":"5",
+				"portrait":"../../../img/main/mimo-card/mimo-card-bp/mimo-card-bp2.png",
+				"Blog":[
+					{ "Article":{ "Article-title":"Guangzhou", "Article-link":"http://www.baidu.com" } },
+					{ "Article":{ "Article-title":"Guangzhou", "Article-link":"http://www.baidu.com" } },
+					{ "Article":{ "Article-title":"Guangzhou", "Article-link":"http://www.baidu.com" } }
+				]
+			}
+		},
+		{ "city":{ "name":"Zhongshan", "citylink":"http://www.baidu.com" } }
+	]
+}
+
+
+
+
